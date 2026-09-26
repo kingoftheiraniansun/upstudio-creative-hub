@@ -1,0 +1,11 @@
+{
+  "appId": "com.uplabstudio.app",
+  "appName": "UP Studio",
+  "webDir": "dist/client",
+  "backgroundColor": "#F7F6F3",
+  "ios": { "contentInset": "never" },
+  "android": { "backgroundColor": "#F7F6F3" },
+  "plugins": {
+    "PushNotifications": { "presentationOptions": ["badge", "sound", "alert"] }
+  }
+}

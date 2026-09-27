@@ -54,10 +54,33 @@ function Home() {
         </div>
         <div className="no-scrollbar -mx-5 mt-4 flex gap-3 overflow-x-auto px-5">
           {PHOTOS.slice(0, 6).map((p) => (
-            <Link key={p.id} to="/gallery" className="w-32 shrink-0 overflow-hidden rounded-2xl bg-muted">
-              <img src={p.thumb} alt="" loading="lazy" className="aspect-[9/16] w-full object-cover" />
+            <Link key={p.id} to="/gallery" className="w-32 shrink-0 animate-pulse overflow-hidden rounded-2xl bg-muted">
+              <img src={p.thumb} alt="" loading="lazy" onLoad={(e) => e.currentTarget.parentElement?.classList.remove("animate-pulse")} className="aspect-[9/16] w-full object-cover" />
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="px-5 pt-10">
+        <p className="text-[11px] tracking-[0.35em] text-gold">SERVICES</p>
+        <h2 className="mt-1 text-lg font-bold">خدمات استودیو</h2>
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          {[
+            ["مد و فشن", "کمپین، لوک‌بوک و کاتالوگ"],
+            ["پرتره", "پرتره شخصی و حرفه‌ای"],
+            ["ورزشی", "عکاسی ورزشکاران و برندها"],
+            ["هنری", "پروژه‌های مفهومی و آرت"],
+          ].map(([t, d]) => (
+            <Link key={t} to="/gallery" onClick={() => haptic()} className="rounded-2xl border border-border bg-card p-4 transition active:scale-[0.98]">
+              <h3 className="font-bold">{t}</h3>
+              <p className="mt-1 text-xs leading-6 text-muted-foreground">{d}</p>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          <a href={STUDIO.phoneTel} onClick={() => haptic()} className="rounded-full bg-secondary py-2.5 text-center text-xs font-medium">تماس</a>
+          <a href={STUDIO.whatsapp} {...ext} onClick={() => haptic()} className="rounded-full bg-secondary py-2.5 text-center text-xs font-medium">واتساپ</a>
+          <a href={STUDIO.instagram} {...ext} onClick={() => haptic()} className="rounded-full bg-secondary py-2.5 text-center text-xs font-medium">اینستاگرام</a>
         </div>
       </section>
 
@@ -80,7 +103,7 @@ function Home() {
               onClick={() => { haptic(); setFrame("loading"); }}
               className="relative block h-64 w-full overflow-hidden border-t border-border"
             >
-              <img src={PHOTOS[9].src} alt="" loading="lazy" className="h-full w-full object-cover opacity-80" />
+              <img src={PHOTOS[9]?.src} alt="" loading="lazy" className="h-full w-full object-cover opacity-80" />
               <span className="absolute inset-0 grid place-items-center bg-ink/30 text-sm font-medium text-ink-foreground">نمایش وب‌سایت در برنامه</span>
             </button>
           ) : (

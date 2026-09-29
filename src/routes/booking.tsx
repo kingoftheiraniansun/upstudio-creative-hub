@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Bell, Check, Copy, Send, Smartphone } from "lucide-react";
 import { toast } from "sonner";
@@ -56,6 +56,10 @@ function Booking() {
   return (
     <div>
       <PageHeader kicker="Reservation" title="رزرو استودیو" sub="فرم را کامل کنید؛ پیام رزرو آماده شده و واتساپ استودیو باز می‌شود." />
+      <Link to="/planner" className="mx-3 mb-4 flex items-center justify-between rounded-3xl border border-border bg-card p-4 text-sm">
+        <span><b>نمی‌دانید چه چیدمانی لازم دارید؟</b><span className="block text-xs text-muted-foreground">برنامه‌ریز هوشمند عکاسی را امتحان کنید</span></span>
+        <span className="text-gold">←</span>
+      </Link>
 
       {sent ? (
         <div className="mx-3 animate-rise rounded-3xl border border-border bg-card p-6">
